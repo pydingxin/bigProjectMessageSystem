@@ -12,6 +12,7 @@
             v-model="valueHtml"
             :defaultConfig="editorConfig"
             :mode="mode"
+            @onChange="valueChanged"
             @onCreated="handleCreated"
         />
         </div>
@@ -23,7 +24,7 @@ import '@wangeditor/editor/dist/css/style.css' // 引入 css
 import { onBeforeUnmount, ref, shallowRef } from 'vue'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 import {storeTable} from '@/store/storeGlobalTable.js'
-
+import myTool from '@/js/myTool.js'
 
 export default ({
   emits:['pointerenter', 'pointerleave'],
@@ -32,6 +33,7 @@ export default ({
     // 编辑器实例，必须用 shallowRef
     const editorRef = shallowRef()
     // 内容 HTML
+    // 打开编辑器用的是真实值的副本，编辑后保存到storeGlobalTable的缓冲区
     let currentValue= storeTable.get_CurrentEditingCell_content();
     const valueHtml = ref(currentValue)
     const toolbarConfig = {
@@ -55,14 +57,21 @@ export default ({
     const handleCreated = (editor) => {
       editorRef.value = editor // 记录 editor 实例，重要！
     }
-
+    
+    const valueChanged = (editor) => {
+      // 被编辑时 内容变化
+      // myTool.p('in CellEditorWang.vue valueChanged(), wang editor content changed → ',editor.getHtml())
+      storeTable.set_CurrentEditingCell_tmp_content(editor.getHtml());
+    }
+    
     return {
       editorRef,
       valueHtml,
       mode: 'default', // 或 'simple'
       toolbarConfig,
       editorConfig,
-      handleCreated
+      handleCreated,
+      valueChanged
     };
   }
 })

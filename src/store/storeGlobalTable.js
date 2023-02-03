@@ -1,3 +1,4 @@
+import myTool from '@/js/myTool.js'
 import {reactive} from 'vue'    // reactive()使其变为响应式
 let mock1=[{
     "key":"row0",
@@ -194,7 +195,7 @@ function add_ColSpanFunc_2_columnsObject(columnArr, cellConfig){
                 deepAddFunc2Node(colNode.children[idx]);
             }
         }else{
-            // console.log('该列添加colSpan函数',colNode.key)
+            // myTool.p('该列添加colSpan函数',colNode.key)
             colNode.colSpan= colSpanFuncOf(colNode.key, cellConfig) 
         }
     }
@@ -212,7 +213,7 @@ function walkColumn(columnMsg,processNodeFunc){
                 walkColNode(colNode.children[idx]);
             }
         }else{
-            // console.log('该列添加colSpan函数',colNode.key)
+            // myTool.p('该列添加colSpan函数',colNode.key)
             processNodeFunc(colNode)
         }
     }
@@ -252,17 +253,17 @@ function makeTableDataRowMapped(tbdata){
 
 let tableDataRowMapped= makeTableDataRowMapped(mock1);
 function  G_getCellValue(rowkey,colkey){
-    // console.log("in G_getCellValue",rowkey,colkey)
+    // myTool.p("in storeGlobalTable.js G_getCellValue",rowkey,colkey)
     return tableDataRowMapped[rowkey][colkey];
 }
 
 function  G_setCellValue(rowkey,colkey,val){
-    // console.log("in G_setCellValue",rowkey,colkey,val)
+    // myTool.p("in storeGlobalTable.js G_setCellValue",rowkey,colkey,val)
     tableDataRowMapped[rowkey][colkey]=val;
 }
 
 function G_getCellConfig(rowkey,colkey){
-    // console.log("in G_getCellConfig",rowkey,colkey)
+    // myTool.p("in storeGlobalTable.js G_getCellConfig",rowkey,colkey)
     return tableCellConfig[rowkey][colkey];
 }
 
@@ -286,17 +287,26 @@ function getCurrentEditingCellKey() {
 }
 function get_CurrentEditingCell_projectName(){
     //如果当前编辑的单元格位置已被设置，返回单元格的项目名
-    console.log("in get_CurrentEditingCell_projectName ",current_editing_rowkey)
+    // myTool.p("in storeGlobalTable.js get_CurrentEditingCell_projectName ",current_editing_rowkey)
     return tableDataRowMapped[current_editing_rowkey]['col1']
 }
 function get_CurrentEditingCell_ColumnName(){
     //如果当前编辑的单元格位置已被设置，返回单元格的列名
-    console.log("in get_CurrentEditingCell_ColumnName ",current_editing_colkey)
+    // myTool.p("in storeGlobalTable.js get_CurrentEditingCell_ColumnName ",current_editing_colkey)
     return getColumnNameByColKey(column2022,current_editing_colkey)
 }
 function get_CurrentEditingCell_content(){
     //单元格富文本内容
     return tableDataRowMapped[current_editing_rowkey][current_editing_colkey]
+}
+
+//编辑单元格内容时，用一个buffer在组件间共享，如果确认则保存到后台，并取代当前的真实值
+let tmp_cell_value = ''
+function get_CurrentEditingCell_tmp_content(){
+    return tmp_cell_value
+}
+function set_CurrentEditingCell_tmp_content(s){
+    tmp_cell_value=s;
 }
 //----------------------------------------------------------------
 
@@ -310,8 +320,9 @@ export const storeTable = reactive({
 
     setCurrentEditingCellKey,
     getCurrentEditingCellKey,
-
     get_CurrentEditingCell_projectName,
     get_CurrentEditingCell_ColumnName,
     get_CurrentEditingCell_content,
+    get_CurrentEditingCell_tmp_content,
+    set_CurrentEditingCell_tmp_content,
 })

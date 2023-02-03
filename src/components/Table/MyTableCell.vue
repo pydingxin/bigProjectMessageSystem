@@ -3,6 +3,8 @@ import {storeTable} from '@/store/storeGlobalTable.js'
 import { toRaw } from '@vue/reactivity'
 import naiveApi from '@/js/naiveUiApi.js'
 import eventBus from '@/js/mittEventBus.js'
+import myTool from '@/js/myTool.js'
+
 
 export default {
     props:['rowKey','colKey'],  //父组件只给位置，自己从store里取数据。数据会变，位置不变
@@ -22,12 +24,17 @@ export default {
         this.curRowKey= toRaw(this.rowKey)
 
         let that=this;
-        setTimeout(()=>{
-            // 设置父元素背景色和双击事件，mounted时候没法用dom，因为还没渲染出来
+        
+        // 设置父元素背景色和双击事件，mounted时候节点还没渲染出来，需要等待
+        // 在这里绑定事件，能防止多次绑定
+        let handler=setInterval(()=>{
+            if(!document.querySelector("#"+this.cellid)) return;
+            clearInterval(handler);
+            // myTool.p("in MyTableCell mounted()",document.querySelector("#"+this.cellid))
             let papa=document.querySelector("#"+this.cellid).parentNode;
             papa.addEventListener("dblclick",()=>{that.editThisCell();});
             papa.setAttribute("style", "background-color:"+this.curCellConfig.color);
-        },1000)
+        },200)
     },
 
     updated(){
@@ -51,7 +58,7 @@ export default {
             // ctrl+click单元格发出事件 通知MyTable.vue要编辑本单元格
             // 父组件根据此单元格的情况，打开编辑窗口或其他操作
             let that = this;
-            console.log("at editThisCell",that.curRowKey,that.curColKey)
+            myTool.p("in MyTableCell.vue editThisCell(), emit event editCell, ",that.curRowKey,that.curColKey)
             storeTable.setCurrentEditingCellKey({"rowkey":that.curRowKey,"colkey":that.curColKey})
             eventBus.emit("editCell");
         }

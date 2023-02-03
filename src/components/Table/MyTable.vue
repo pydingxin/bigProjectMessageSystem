@@ -33,7 +33,7 @@
 import {storeTable} from '@/store/storeGlobalTable.js'
 import eventBus from '@/js/mittEventBus.js'
 import naiveApi from '@/js/naiveUiApi.js'
-
+import myTool from '@/js/myTool.js'
 import { NText,NModal, NTag,NScrollbar, NButton,NDataTable } from 'naive-ui'
 import { h } from 'vue'
 import MyTableCell from './MyTableCell.vue'
@@ -73,8 +73,7 @@ export default {
       //注册事件
       let that=this;
       eventBus.on('editCell',()=>{
-          let o=storeTable.getCurrentEditingCellKey()
-          console.log("table got editing task",o)
+          myTool.p("in MyTable.vue editCell event handler", storeTable.getCurrentEditingCellKey())
           that.showCellEditorModal=true;
       })
     },
@@ -97,10 +96,11 @@ export default {
       },
 
       editCellCancel(){
-        naiveApi.message.success("cell cancelled")
+        // naiveApi.message.success("cell cancelled")
       },
       editCellSubmit(){
-        naiveApi.message.success("cell saved successfully")
+        // naiveApi.message.success("cell saved successfully")
+        // myTool.p('in MyTable.vue editCellSubmit(), after editing got :',storeTable.get_CurrentEditingCell_tmp_content())
       },
   }
 }

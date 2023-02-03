@@ -1,6 +1,6 @@
 <script>
 import {storeTable} from '@/store/storeGlobalTable.js'
-import { toRaw } from '@vue/reactivity'
+import { toRaw } from 'vue'
 import naiveApi from '@/js/naiveUiApi.js'
 import eventBus from '@/js/mittEventBus.js'
 import myTool from '@/js/myTool.js'

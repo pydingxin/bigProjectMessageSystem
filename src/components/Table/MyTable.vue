@@ -17,6 +17,7 @@
   <n-modal
     v-model:show="showCellEditorModal"
     preset="dialog"
+    z-index=100
     title="正在编辑单元格"
     positive-text="保存"
     negative-text="取消"
@@ -27,6 +28,7 @@
     <CellEditor />
   </n-modal>
 
+
 </template>
 
 <script>
@@ -34,7 +36,7 @@ import {storeTable} from '@/store/storeGlobalTable.js'
 import eventBus from '@/js/mittEventBus.js'
 import naiveApi from '@/js/naiveUiApi.js'
 import myTool from '@/js/myTool.js'
-import { NText,NModal, NTag,NScrollbar, NButton,NDataTable } from 'naive-ui'
+import { NText,NModal, NTag,NScrollbar, NButton,NDataTable,NDialogProvider } from 'naive-ui'
 import { h } from 'vue'
 import MyTableCell from './MyTableCell.vue'
 import CellEditor from './CellEditor.vue'
@@ -45,6 +47,7 @@ export default {
     NText,
     NModal,
     NTag,
+    NDialogProvider,
     NScrollbar,
     NButton,
     NDataTable,

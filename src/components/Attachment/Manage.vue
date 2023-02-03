@@ -28,6 +28,7 @@
 
 <script>
 import { NButton,NUpload,NUploadDragger,NGradientText } from 'naive-ui'
+import naiveApi from '@/js/naiveUiApi.js'
 
 export default{
   emits:['pointerenter', 'pointerleave'],
@@ -76,7 +77,7 @@ export default{
     handleDownload(file){
       //不添加url，点击下载也不会下载
       //用这个下载按钮，实现复制url的功能，但管理素材，最好和选择素材分开，混一块很纠缠
-      console.log("handleDownlaod",file)
+
       return false;
     }
   }

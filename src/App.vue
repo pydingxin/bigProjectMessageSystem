@@ -1,7 +1,9 @@
 <template>
 
-  <AttachManage />
-  <!-- <MyTable /> -->
+
+  <!-- <AttachManage /> -->
+
+  <MyTable />
   <!-- <button type="button" @click="testbtn">click</button> -->
 
 </template>

@@ -3,7 +3,9 @@ import {
     NSwitch,NButton,NDivider,NSpace,NInputNumber,
     NSelect
 } from 'naive-ui'
-import { storeTable } from '../../store/storeGlobalTable';
+import { storeTable } from '@/store/storeGlobalTable';
+import { storeAttachments } from '@/store/storeAttachments.js';
+
 
 import  CellEditorWang  from './CellEditorWang.vue'
 
@@ -23,7 +25,13 @@ export default {
             cellColorOptions: [
                 {label: "红色",value: "red",},
                 {label: "绿色",value: "green"},
-                {label: "黄色",value: "yellow"},],
+                {label: "黄色",value: "yellow"},
+            ],
+
+            //用选择器获取附件的网址，然后用户手动把网址粘贴到编辑器里
+            selectedAttachmentUrl:'',
+            attachments:storeAttachments.getAllAttachments(),
+            attachmentsOptions:attachments.map(one=>({label:one.name,value:one.url})),
 
             cellProjectName:storeTable.get_CurrentEditingCell_projectName(),
             cellColumnName:storeTable.get_CurrentEditingCell_ColumnName(),

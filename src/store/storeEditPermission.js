@@ -1,38 +1,31 @@
 
 import {reactive} from 'vue'    
-
+import {storeAccount} from './storeAccount'
 /*
-后台数据库保存文件名即可，url status id 都可以临时生成
+权限涉及三个东西：单位名字-项目名-列名
+单位名字 涉及Account store，后端获取的，可以为 所有单位
+项目名 涉及Table store，后端获取的，可以为所有项目
+列名不涉及后端，写死在storeGlobalTable里 可以为所有列
+权限为[{orgName:'',projectName:'',columnName:''}]，从后端存取
+编辑单元格时，检查权限即可。
 */
-let attches = [
-    {
-        id: 'url-test',
-        name: 'a.txt',
-        url: 'https://a.txt',
-        status: 'finished'
-      },
-      {
-        id: 'text-message',
-        name: '你的短信.doc',
-        url: 'https://你的短信.doc',
-        status: 'error'
-      },
-      {
-        id: 'notification',
-        name: '你的通知.xls',
-        url: 'https://你的通知.xls',
-        status: 'finished'
-      },
-      {
-        id: 'contact',
-        name: '你的联系人信息.pptx',
-        url: 'https://你的联系人信息.pptx',
-        status: 'finished'
-      }
-]
-function getAllAttachments(){
-    return attches;
+let perm=[
+  {
+    orgName:"平邑县教体局",
+    projectName:"所有行",
+    columnName:"项目建成后效益",
+  },
+];
+function getAllOrgEditPermissions(){
+    return perm;
 }
+function getThisOrgEditPermissions(){
+  return perm.filter(one=>(
+    one.orgName==='所有单位' || one.orgName===storeAccount.getThisUserOrgName()
+    ))
+}
+
 export const storeAttachments = reactive({
-  getAllAttachments,
+  getAllOrgEditPermissions,
+  getThisOrgEditPermissions,
 })

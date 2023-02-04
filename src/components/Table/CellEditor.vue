@@ -1,14 +1,15 @@
 
 <template>
-    <div style="padding:1rem;max-width: 50rem;">
-        <div>
-            {{ cellProjectName}} 
+    
+
+        <div id="div1_cellplace">
+            <!-- 当前单元格位置 -->
+            当前行：{{ cellProjectName}} 
             <br/>
-            {{ cellColumnName}} 
+            当前列：{{ cellColumnName}} 
         </div>
-        <n-divider />
-        <div id="formatBox">
-            <span>一、显示效果：</span>
+       
+        <div id="div2_cellFormat">
             <n-space align="center">
                 <p>合并右侧单元格：</p>
                 <n-switch 
@@ -42,16 +43,10 @@
                 
             </n-space>
         </div>
-        <n-divider />
-        <div id="editorBox">
-            二、内容编辑：
-            <button type="button">查看附件列表</button>
+
+        <div id="div3_editorBox">
             <CellEditorWang />
         </div>
-        
-
-
-    </div>
     </template>
     
     
@@ -64,7 +59,6 @@ import { storeTable } from '@/store/storeGlobalTable';
 import { storeAttachments } from '@/store/storeAttachments.js';
 
 import naiveApi from '@/js/naiveUiApi.js'
-import AttachmentsUrlList from './AttachmentsUrlList.vue'
 import  CellEditorWang  from './CellEditorWang.vue'
 
 
@@ -73,7 +67,7 @@ export default {
     components: {
         NButton,CellEditorWang,NDivider,
         NInputNumber,NSwitch,NSpace,NSelect,
-        AttachmentsUrlList,NModal,
+        NModal
     },
     data(){
         return {

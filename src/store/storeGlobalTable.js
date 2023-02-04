@@ -1,6 +1,8 @@
 import myTool from '@/js/myTool.js'
 import {reactive} from 'vue'    // reactive()使其变为响应式
-let mock1=[{
+
+//后端传来的总的项目数据
+let fullTableData=[{
     "key":"row0",
     "col0":"3",
     "col1":"洪宽生态板、高档家具制造项目",
@@ -150,7 +152,7 @@ function extractKey2CellConfig(){
     //数据必然是数组，数组中每个元素x有key，x的以col开头域都是列key
     //运行时应该从后台获取这个对象
     let ret = {}
-    for(let row of mock1){
+    for(let row of fullTableData){
         ret[row.key]= {}
         for(let col of Object.keys(row).filter(x=>x.startsWith("col"))){
             ret[row.key][col]={};
@@ -251,7 +253,7 @@ function makeTableDataRowMapped(tbdata){
     return tableDataRowMapped;
 }
 
-let tableDataRowMapped= makeTableDataRowMapped(mock1);
+let tableDataRowMapped= makeTableDataRowMapped(fullTableData);
 function  G_getCellValue(rowkey,colkey){
     // myTool.p("in storeGlobalTable.js G_getCellValue",rowkey,colkey)
     return tableDataRowMapped[rowkey][colkey];
@@ -309,9 +311,15 @@ function set_CurrentEditingCell_tmp_content(s){
     tmp_cell_value=s;
 }
 //----------------------------------------------------------------
+// ProjectManage所需信息
+function get_projectManage_msg(){
+    //行key直接用作表格的key
+    return fullTableData.map(pro=>({key:pro.key, projectName:pro.col1}))
+}
+//----------------------------------------------------------------
 
 export const storeTable = reactive({
-    tableData:mock1,
+    tableData:fullTableData,
     tableColumns:column2022,
     tableTitle:"2022年县级重点项目建设情况调度表",
     G_getCellValue,
@@ -325,4 +333,7 @@ export const storeTable = reactive({
     get_CurrentEditingCell_content,
     get_CurrentEditingCell_tmp_content,
     set_CurrentEditingCell_tmp_content,
+
+    get_projectManage_msg,
 })
+

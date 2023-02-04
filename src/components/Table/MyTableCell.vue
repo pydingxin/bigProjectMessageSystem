@@ -1,6 +1,6 @@
 <script>
 import {storeTable} from '@/store/storeGlobalTable.js'
-import { toRaw } from 'vue'
+import { toRaw } from 'vue' //toRaw只能转基础类型
 import naiveApi from '@/js/naiveUiApi.js'
 import eventBus from '@/js/mittEventBus.js'
 import myTool from '@/js/myTool.js'

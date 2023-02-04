@@ -1,5 +1,9 @@
 
-import {reactive} from 'vue'    // reactive()使其变为响应式
+import {reactive} from 'vue'    
+
+/*
+后台数据库保存文件名即可，url status id 都可以临时生成
+*/
 let attches = [
     {
         id: 'url-test',

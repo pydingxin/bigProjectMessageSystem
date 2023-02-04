@@ -17,7 +17,6 @@
   <n-modal
     v-model:show="showCellEditorModal"
     preset="dialog"
-    z-index=100
     title="正在编辑单元格"
     positive-text="保存"
     negative-text="取消"

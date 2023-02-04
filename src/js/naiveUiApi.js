@@ -8,6 +8,17 @@ const { message, notification, dialog, loadingBar } = createDiscreteApi(
   ["message", "dialog", "notification", "loadingBar"],
 );
 
+function notifyFail(msg){
+  notification['error']({
+    content: "未成功",
+    meta: msg,
+    duration: 2500,
+    keepAliveOnHover: true
+  });
+}
+
+
 export default {
-  message, notification, dialog, loadingBar
+  message, notification, dialog, loadingBar,
+  notifyFail,
 }

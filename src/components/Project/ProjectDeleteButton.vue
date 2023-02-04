@@ -3,7 +3,7 @@
         <template #trigger>
             <n-button>删除项目</n-button>
         </template>
-        删除本项目，以及该项目的表格数据？
+        删除本项目及其表格数据？
         <template #action>
             <n-button size="small"   @click="confirmDelete">确认删除</n-button>
         </template>
@@ -32,6 +32,7 @@ export default{
         confirmDelete(){
             this.show=false;
             console.log('delete confirm',this.projectKey);
+            // 由专门的store执行
         },
     }
 }

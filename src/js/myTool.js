@@ -17,7 +17,7 @@ async function clipboardCopy(copyStr, successMsg) {
       naiveApi.notification['error']({
         content: "错误",
         meta: '无法复制到剪贴板',
-        duration: 1000,
+        duration: 2500,
         keepAliveOnHover: true
       });
     }

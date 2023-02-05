@@ -35,6 +35,7 @@ import { Add ,Search} from "@vicons/ionicons5";
 import naiveApi from '@/js/naiveUiApi.js'
 
 export default{
+    emits:['pointerenter', 'pointerleave'],
     components: {
         NDataTable,NButton,ProjectDeleteButton,NInput,NSpace,
         NIcon,

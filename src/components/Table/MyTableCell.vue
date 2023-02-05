@@ -5,11 +5,12 @@ import naiveApi from '@/js/naiveUiApi.js'
 import eventBus from '@/js/mittEventBus.js'
 import myTool from '@/js/myTool.js'
 
+import {NScrollbar, } from 'naive-ui'
 
 export default {
     props:['rowKey','colKey'],  //父组件只给位置，自己从store里取数据。数据会变，位置不变
     components:{
-        
+        NScrollbar
     },
 
     computed: {
@@ -67,14 +68,24 @@ export default {
 </script>
 
 <template>
+
     <!-- 用id设置父元素背景色，MyTable.vue里class配合deep修改富文本格式 -->
-    <div :id="cellid" 
-        class="celldiv" 
-        style="min-width: 1rem;min-height: 1rem"
-        v-html="curCellValue" >
-    </div>
- 
+    <div :id="cellid" style="max-height: 15rem;overflow-y: auto;" v-html="curCellValue" ></div>
+
  </template>
 
 <style scoped>
+::-webkit-scrollbar {
+    width: 8px;
+}
+/*  滚动条轨道 */
+::-webkit-scrollbar-track {
+    background-color:lightblue;
+    border-radius: 6px;
+}
+/*  滚动条上的滚动滑块 */
+::-webkit-scrollbar-thumb {
+    background-color:rosybrown;
+    border-radius: 6px;
+}
 </style>

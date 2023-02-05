@@ -1,11 +1,12 @@
 <template>
   <!-- 表格 -->
   <n-scrollbar trigger="none" x-scrollable>
-    <div v-if="renderTable" id="table_container" style="min-width:3000px" >
+    <div v-if="renderTable" id="table_container" style="min-width:3800px" >
       <n-data-table
-        size="large"
+        size="small"
         :render-cell="renderCell"
         :data="tableData"
+
         :columns="columns"
         :single-line="false"
         :pagination="pagination"
@@ -56,6 +57,20 @@ export default {
 
   data() {
     return {
+      pagination:{
+        page: 1,
+        pageSize: 3,
+        showSizePicker: true,
+        pageSizes: [3, 10, 50, 100,200],
+        onChange: (page) => {
+          pagination.page = page;
+        },
+        onUpdatePageSize: (pageSize) => {
+          pagination.pageSize = pageSize;
+          pagination.page = 1;
+        }
+      },
+
       renderTable:true,
       test:"",
 
@@ -64,9 +79,7 @@ export default {
       //表格参数，先绑到局部变量,便于解耦和管理
       tableData:storeTable.tableData, 
       columns:  storeTable.tableColumns,
-      pagination: {
-        pageSize: 10
-      }
+
 
     }
   },
@@ -112,8 +125,8 @@ export default {
 <style scoped>
 :deep(.n-data-table-th){
   text-align: center;
-  background-color:antiquewhite;
-  border:1px solid black;
+  /* background-color:antiquewhite;
+  border:1px solid black; */
   font-weight: bold;
 }
 

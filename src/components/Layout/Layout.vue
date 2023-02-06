@@ -1,6 +1,6 @@
 <template>
     <n-layout>
-      <n-layout-header bordered>
+      <n-layout-header  bordered>
         <Header />
       </n-layout-header>
 

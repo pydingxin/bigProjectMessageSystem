@@ -2,6 +2,7 @@
     <n-space>
         <!-- 输入空时查找全部 -->
         <n-input clearable 
+            :style="{'width':'20rem'}"
             v-model:value="inputProjectName" 
             type="text" 
             placeholder="输入项目名" />
@@ -16,7 +17,7 @@
             查找项目
         </n-button>
     </n-space>
-
+    <div style="height:0.4rem"></div>
       <n-data-table
         :columns="columns"
         :data="tableDataOnShow"

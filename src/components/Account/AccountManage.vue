@@ -1,8 +1,7 @@
 <template>
-    <div style="padding:1rem">
-        <!-- <AccountAddPanel /> -->
-        <div style="height:0.2rem"></div>
-        <EditPanel />
+    <div>
+        <AddPanel />
+        <EditPanel />    
         <div style="height:0.2rem"></div>
         <n-data-table :columns="columns" :data="allOrgMsgs" :pagination="pagination" />
     </div>
@@ -16,12 +15,13 @@ import { NInput,NDataTable,NButton } from "naive-ui";
 import AccountDeleteButton from './DeleteButton.vue'
 import AccountEditButton from './EditButton.vue'
 import EditPanel from './EditPanel.vue'
+import AddPanel from './AddPanel.vue'
 
 export default {
     emits:['pointerenter', 'pointerleave'],
     components: {
         NInput,NDataTable,NButton,
-        // AccountAddPanel,
+        AddPanel,
         EditPanel 
     },
     data(){

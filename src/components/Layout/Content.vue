@@ -1,5 +1,7 @@
 <template>
-<component :is="selectedContentComponent"></component>
+    <div style="padding:0.4rem">
+        <component :is="selectedContentComponent"></component>
+    </div>
 </template>
 
 <script>

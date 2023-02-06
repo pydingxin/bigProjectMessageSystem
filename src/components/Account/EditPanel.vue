@@ -1,9 +1,10 @@
 
 <template>
-
-    <n-input v-if="showThisPanel" v-model:value="org"  placeholder="输入单位" :style="{ width: '20%' }" />  &nbsp
-    <n-input v-if="showThisPanel" v-model:value="user"  placeholder="输入账号"  :style="{ width: '20%' }" />&nbsp
-    <n-input v-if="showThisPanel" v-model:value="pass"  placeholder="输入密码"  :style="{ width: '20%' }" />  &nbsp
+   
+   <div v-if="showThisPanel"  style="height:0.2rem"></div>
+    <n-input v-if="showThisPanel" v-model:value="org"  placeholder="输入单位" :style="{ 'max-width':'10rem' }" />  &nbsp
+    <n-input v-if="showThisPanel" v-model:value="user"  placeholder="输入账号"  :style="{ 'max-width':'10rem' }" />&nbsp
+    <n-input v-if="showThisPanel" v-model:value="pass"  placeholder="输入密码"  :style="{ 'max-width':'10rem' }" />  &nbsp
     <n-button v-if="showThisPanel" @click="saveEdit">保存编辑</n-button> &nbsp
     <n-button v-if="showThisPanel" @click="cancelEdit">取消编辑</n-button>
 </template>

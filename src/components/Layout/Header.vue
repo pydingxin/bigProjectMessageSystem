@@ -1,23 +1,20 @@
 <template>
-    <div  style="margin-top:0.5rem;margin-right:1rem">
-        <n-space align="center" justify="end">
-          <n-dropdown :options="options" trigger="hover"  @select="handleAvatarSelect">
-            <n-space align="center" justify="end">
-              <n-avatar
-                round
-                size="medium"
-                :src="ManImg"
-              />
-              <span>{{ thisOrgName }}</span>
-            </n-space>
-          </n-dropdown>
-      </n-space>
+    <div id="container" style="display:flex;align-items: center;justify-content:space-between;">
+          <h3 style="color:whitesmoke;margin:0.2rem">
+              &nbsp&nbsp欢迎使用重点项目信息报送
+          </h3>
+        <n-dropdown :options="options" trigger="hover"  @select="handleAvatarSelect">
+            <div style="display:flex;align-items: center;">
+              <n-avatar round size="medium" :src="ManImg" />
+              <span style="width:0.4rem"></span>
+              <span style="font-size: medium;color:white">{{ thisOrgName }}</span>
+            </div>
+        </n-dropdown>
     </div>
 </template>
     
 <script>
 import { h } from "vue";
-import { NIcon } from "naive-ui";
 import {
   PersonCircleOutline as UserIcon,
   LogOutOutline as LogoutIcon
@@ -33,14 +30,14 @@ const renderIcon = (icon) => {
 
 import  ManImg from './man.webp'
 
-import { NSpace,NAvatar,NDropdown,
+import { NSpace,NAvatar,NDropdown,NIcon
 } from 'naive-ui';
 
 import {storeAccount} from '@/store/storeAccount.js'
 
 export default{
     components:{
-        NSpace,NAvatar,NDropdown,
+      NSpace,NAvatar,NDropdown,NIcon
     },
     mounted(){
       this.thisOrgName = storeAccount.getThisOrgAccountMsg().org;
@@ -72,5 +69,18 @@ export default{
 </script>
 
 <style scoped>
+#systemTitle{
+  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Noto Sans CJK SC,WenQuanYi Micro Hei,Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
 
+#container {
+  display:flex;
+  justify-content:end;
+  align-items:center;
+  background-color:#36ad6a;
+  padding:0.2rem;
+  padding-right: 1rem;
+  margin-bottom: 0.4rem;
+}
 </style>

@@ -16,9 +16,17 @@ function notifyFail(msg){
     keepAliveOnHover: true
   });
 }
+function notifySuccess(msg){
+  notification['success']({
+    content: "成功",
+    meta: msg,
+    duration: 2500,
+    keepAliveOnHover: true
+  });
+}
 
 
 export default {
   message, notification, dialog, loadingBar,
-  notifyFail,
+  notifyFail,notifySuccess
 }

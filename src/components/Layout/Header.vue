@@ -8,7 +8,7 @@
                 size="medium"
                 :src="ManImg"
               />
-              <span >平邑县教体局</span>
+              <span>{{ thisOrgName }}</span>
             </n-space>
           </n-dropdown>
       </n-space>
@@ -36,14 +36,19 @@ import  ManImg from './man.webp'
 import { NSpace,NAvatar,NDropdown,
 } from 'naive-ui';
 
+import {storeAccount} from '@/store/storeAccount.js'
+
 export default{
     components:{
         NSpace,NAvatar,NDropdown,
     },
+    mounted(){
+      this.thisOrgName = storeAccount.getThisOrgAccountMsg().org;
+    },
     data(){
         return{
             ManImg,
-        
+            thisOrgName:"",
             options: [
                 {
                     label: "我的权限",

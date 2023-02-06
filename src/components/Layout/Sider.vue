@@ -55,12 +55,12 @@ export default{
                     {
                         label: "用户账号管理",
                         icon: renderIcon(PersonAddOutline),
-                        key: "yongHuZhangHaoGuanLi",
+                        key: "AccountManage",
                     },
                     {
                         label: "用户权限管理",
                         icon: renderIcon(ShieldCheckmarkOutline),
-                        key: "yongHuQuanXianGuanLi",
+                        key: "EditPermissionManage",
                     },
                 ]
             },
@@ -70,7 +70,7 @@ export default{
     methods:{
         handleMenuClick(key){
             // 侧边菜单栏点击后，发出事件，通知<Content>切换主界面
-            console.log("in Sider.vue handleMenuClick(), select content component",key); //点击菜单栏的叶节点，获取key
+            // console.log("in Sider.vue handleMenuClick(), select content component",key); //点击菜单栏的叶节点，获取key
             eventBus.emit('changeContentComponent',key);
         },
   },

@@ -1,5 +1,5 @@
 <template>
-    <div style="margin-top:0.5rem;margin-right:1rem">
+    <div  style="margin-top:0.5rem;margin-right:1rem">
         <n-space align="center" justify="end">
           <n-dropdown :options="options" trigger="hover"  @select="handleAvatarSelect">
             <n-space align="center" justify="end">
@@ -8,7 +8,7 @@
                 size="medium"
                 :src="ManImg"
               />
-              <span>平邑县教体局</span>
+              <span >平邑县教体局</span>
             </n-space>
           </n-dropdown>
       </n-space>
@@ -65,3 +65,7 @@ export default{
     },
 }
 </script>
+
+<style scoped>
+
+</style>

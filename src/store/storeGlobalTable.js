@@ -308,8 +308,23 @@ function get_projectManage_msg(){
     return fullTableData.map(pro=>({key:pro.key, projectName:pro.col1}))
 }
 //----------------------------------------------------------------
-
+// EditPermissionManage.vue所需信息
+function getProjectKeyNameMap(){
+    let projectKeyNameMap={}
+    for(let m of fullTableData){
+        projectKeyNameMap[m.key]= m.col1;
+    }
+    return projectKeyNameMap
+}
+function getColumnKeyNameMap(columnMsg=column2022){
+    let ret={}
+    walkColumn(columnMsg,(node)=>{ret[node.key]=node.title})
+    return ret
+}
+//----------------------------------------------------------------
+import {storeEditPermissions} from "@/store/storeEditPermission.js"
 export const storeTable = reactive({
+    // MyTable.vue使用
     tableData:fullTableData,
     tableColumns:column2022,
     tableTitle:"2022年县级重点项目建设情况调度表",
@@ -317,6 +332,7 @@ export const storeTable = reactive({
     G_getCellConfig,
     G_setCellValue,
 
+    // CellEditor.vue使用
     setCurrentEditingCellKey,
     getCurrentEditingCellKey,
     get_CurrentEditingCell_projectName,
@@ -325,6 +341,11 @@ export const storeTable = reactive({
     get_CurrentEditingCell_tmp_content,
     set_CurrentEditingCell_tmp_content,
 
+    // ProjectManage.vue使用
     get_projectManage_msg,
+
+    //EditPermissionManage.vue使用
+    getProjectKeyNameMap,
+    getColumnKeyNameMap,
 })
 

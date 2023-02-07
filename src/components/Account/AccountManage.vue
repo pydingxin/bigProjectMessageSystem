@@ -5,7 +5,7 @@
         <div style="height:0.2rem"></div>
         <n-data-table :columns="columns" :data="allOrgMsgs" :pagination="pagination" />
     </div>
-    {{ allOrgMsgs  }}
+    <!-- {{ allOrgMsgs  }} -->
 </template>
 
 <script>
@@ -30,15 +30,15 @@ export default {
             columns:[
                 {
                     title: "单位",
-                    key: "org",
+                    key: "org_name",
                 },
                 {
                     title: "账号",
-                    key: "user",
+                    key: "org_user",
                 },
                 {
                     title: "密码",
-                    key: "pass",
+                    key: "org_pass",
                 },
                 {
                     title: "",
@@ -47,7 +47,7 @@ export default {
                         return h(
                             AccountEditButton,
                             {
-                                accountKeyProxy: row.key,
+                                accountKeyProxy: row.org_key,
                             },
                             { default: () => "编辑账号" }
                         );
@@ -60,7 +60,7 @@ export default {
                         return h(
                             AccountDeleteButton,
                             {
-                                accountKeyProxy: row.key,
+                                accountKeyProxy: row.org_key,
                             },
                             { default: () => "删除账号" }
                         );

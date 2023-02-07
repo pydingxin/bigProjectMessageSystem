@@ -7,7 +7,7 @@
             <div style="display:flex;align-items: center;">
               <n-avatar round size="medium" :src="ManImg" />
               <span style="width:0.4rem"></span>
-              <span style="font-size: medium;color:white">{{ thisOrgName }}</span>
+              <span style="font-size: medium;color:white">{{ thisOrg.org_name }}</span>
             </div>
         </n-dropdown>
     </div>
@@ -40,12 +40,13 @@ export default{
       NSpace,NAvatar,NDropdown,NIcon
     },
     mounted(){
-      this.thisOrgName = storeAccount.getThisOrgAccountMsg().org;
+      this.thisOrg = storeAccount.getThisOrgAccountMsg()
+      
     },
     data(){
         return{
             ManImg,
-            thisOrgName:"",
+            thisOrg:{},
             options: [
                 {
                     label: "我的权限",
@@ -62,7 +63,7 @@ export default{
     },
     methods:{
         handleAvatarSelect(item){
-            console.log(item); 
+            console.log(item,this.thisOrg.org_name); 
         }
     },
 }

@@ -6,7 +6,7 @@
 
 <script>
 import eventBus from '@/js/mittEventBus.js'
-
+import {storeEditPermissions} from "@/store/storeEditPermission.js"
 import MyTable from "@/components/Table/MyTable.vue";
 import AttachmentManage from "@/components/Attachment/AttachmentManage.vue";
 import ProjectManage from "@/components/Project/ProjectManage.vue";

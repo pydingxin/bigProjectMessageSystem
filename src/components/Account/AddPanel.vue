@@ -42,6 +42,7 @@ export default{
     },
 
     async clickConfirmAdd(){
+        console.log("in addPanel.vue clickConformAdd(), add account:",this.org,this.user,this.pass)
         let done= true; // do something
         if(done){
             naiveUiApi.notifySuccess("添加成功")

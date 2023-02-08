@@ -5,7 +5,7 @@ import App from './App.vue'
 import 'vfonts/Lato.css'
 import 'vfonts/FiraCode.css'
 
-import './assets/main.css'
+import './assets/picnic.css'
 
 
 let app=createApp(App)

@@ -1,5 +1,5 @@
 <template>
-    <div style="padding:0.4rem">
+    <div style="padding:0.4rem; margin-left:0.5rem">
         <component :is="selectedContentComponent"></component>
     </div>
 </template>

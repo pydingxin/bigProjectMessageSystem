@@ -5,7 +5,7 @@
             :style="{'width':'20rem'}"
             v-model:value="inputProjectName" 
             type="text" 
-            placeholder="输入项目名" />
+            placeholder="输入项目名，添加项目时必须输入全名" />
 
         <n-button type="primary" @click="addProject">  
             <n-icon size="15" ><add /></n-icon>

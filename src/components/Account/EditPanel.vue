@@ -24,7 +24,7 @@ export default{
         console.log("in AccountEditPanel.vue mounted(),editAccount event,orgkey=",orgkey);
         let m=storeAccount.getOrgMsgByKey(orgkey);
         console.log("in AccountEditPanel.vue, m=",m);
-        [this.org,this.user,this.pass] = [m.org,m.user,m.pass]
+        [this.org,this.user,this.pass] = [m.org_name,m.org_user,m.org_pass]
         this.showThisPanel=true;
     })
    },

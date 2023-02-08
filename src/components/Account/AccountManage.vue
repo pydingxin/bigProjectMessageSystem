@@ -82,3 +82,17 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+:deep(.n-data-table-th) {
+    text-align: left;
+    font-weight: 900;
+    color: #fff;
+    background-color: #0074d9;
+    font-size: 1.2em;
+    padding: .3em 2.4em .3em .6em;
+}
+:deep(.n-data-table-td){
+    font-size: 1.1em;
+}
+</style>

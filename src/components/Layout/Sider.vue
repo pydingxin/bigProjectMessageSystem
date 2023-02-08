@@ -75,3 +75,9 @@ export default{
   },
 }
 </script>
+
+<style scoped>
+:deep(.n-menu-item-content-header){
+    font-size: 1.1em;
+}
+</style>
